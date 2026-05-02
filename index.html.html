@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My BA Journey 🚀</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fef9f0;
+    --bg2: #fff8ee;
+    --orange: #ff7849;
+    --orange-soft: #fff0ea;
+    --yellow: #ffc542;
+    --yellow-soft: #fffae8;
+    --green: #3ecf8e;
+    --green-soft: #edfaf3;
+    --blue: #5b8dee;
+    --blue-soft: #eef3fd;
+    --pink: #ff6b9d;
+    --pink-soft: #fff0f5;
+    --purple: #a78bfa;
+    --purple-soft: #f3f0ff;
+    --text: #2d2d2d;
+    --muted: #888;
+    --border: #ecdfc8;
+    --card: #ffffff;
+    --shadow: 0 4px 20px rgba(0,0,0,0.07);
+    --shadow-hover: 0 8px 30px rgba(0,0,0,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Quicksand', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 10% 20%, rgba(255,120,73,0.06) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(91,141,238,0.06) 0%, transparent 40%),
+      radial-gradient(circle at 50% 50%, rgba(255,197,66,0.04) 0%, transparent 60%);
+  }
+
+  /* HEADER */
+  header {
+    background: var(--card);
+    border-bottom: 2px solid var(--border);
+    padding: 16px 28px;
+    display: flex; align-items: center; gap: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .logo {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900; font-size: 1.3em;
+    background: linear-gradient(135deg, var(--orange), var(--yellow));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .logo-sub { font-size: 12px; color: var(--muted); font-weight: 500; }
+  .header-badge {
+    margin-left: auto;
+    background: linear-gradient(135deg, var(--orange), var(--pink));
+    color: white; border-radius: 20px; padding: 6px 16px;
+    font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 13px;
+    box-shadow: 0 4px 12px rgba(255,120,73,0.3);
+  }
+
+  /* LAYOUT */
+  .app { display: flex; min-height: calc(100vh - 65px); }
+
+  /* SIDEBAR */
+  .sidebar {
+    width: 240px; flex-shrink: 0;
+    background: var(--card);
+    border-right: 2px solid var(--border);
+    padding: 20px 14px;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+
+  .nav-section-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+    color: var(--muted); text-transform: uppercase;
+    padding: 10px 10px 4px;
+  }
+
+  .nav-btn {
+    display: flex; align-items: center; gap: 10px;
+    padding: 11px 14px; border-radius: 14px; cursor: pointer;
+    border: none; background: transparent;
+    color: var(--muted); font-size: 13.5px; font-weight: 600;
+    font-family: 'Quicksand', sans-serif;
+    text-align: left; width: 100%;
+    transition: all 0.2s ease;
+  }
+  .nav-btn:hover { background: var(--bg); color: var(--text); transform: translateX(2px); }
+  .nav-btn.active { background: var(--orange-soft); color: var(--orange); }
+  .nav-icon { font-size: 16px; }
+
+  .streak-widget {
+    margin-top: auto;
+    background: linear-gradient(135deg, #fff7e6, #fff0ea);
+    border: 2px solid #fcdbb8;
+    border-radius: 20px; padding: 16px;
+    text-align: center;
+  }
+  .streak-fire { font-size: 2em; margin-bottom: 4px; }
+  .streak-num {
+    font-family: 'Nunito', sans-serif; font-weight: 900;
+    font-size: 2.2em; color: var(--orange); line-height: 1;
+  }
+  .streak-label { font-size: 11px; color: var(--muted); font-weight: 600; margin-top: 2px; }
+  .streak-total { font-size: 11px; color: var(--muted); margin-top: 6px; }
+
+  /* MAIN */
+  .main { flex: 1; padding: 28px; overflow-y: auto; max-width: 860px; }
+  .panel { display: none; animation: fadeUp 0.3s ease; }
+  .panel.active { display: block; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* TYPOGRAPHY */
+  .panel-title {
+    font-family: 'Nunito', sans-serif; font-weight: 900;
+    font-size: 1.7em; margin-bottom: 4px; color: var(--text);
+  }
+  .panel-sub { font-size: 13px; color: var(--muted); margin-bottom: 24px; font-weight: 500; }
+
+  /* CARDS */
+  .card {
+    background: var(--card); border-radius: 20px;
+    border: 2px solid var(--border);
+    padding: 20px; box-shadow: var(--shadow);
+    transition: box-shadow 0.2s;
+  }
+  .card:hover { box-shadow: var(--shadow-hover); }
+
+  /* METRIC GRID */
+  .metric-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
+  .metric-card {
+    border-radius: 18px; padding: 18px;
+    border: 2px solid transparent;
+  }
+  .metric-card.orange { background: var(--orange-soft); border-color: #fcdbb8; }
+  .metric-card.blue { background: var(--blue-soft); border-color: #c5d8f9; }
+  .metric-card.green { background: var(--green-soft); border-color: #b6efd6; }
+  .metric-card.purple { background: var(--purple-soft); border-color: #ddd6fe; }
+  .metric-icon { font-size: 1.5em; margin-bottom: 6px; }
+  .metric-val {
+    font-family: 'Nunito', sans-serif; font-weight: 900;
+    font-size: 2em; line-height: 1;
+  }
+  .metric-card.orange .metric-val { color: var(--orange); }
+  .metric-card.blue .metric-val { color: var(--blue); }
+  .metric-card.green .metric-val { color: var(--green); }
+  .metric-card.purple .metric-val { color: var(--purple); }
+  .metric-label { font-size: 11px; font-weight: 700; color: var(--muted); margin-top: 3px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* TODAY TASK */
+  .today-task-card {
+    background: linear-gradient(135deg, #fff7e6, #fff0ea);
+    border: 2px solid #fcdbb8; border-radius: 20px;
+    padding: 22px; margin-bottom: 16px;
+  }
+  .task-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--orange); color: white;
+    border-radius: 20px; padding: 4px 12px;
+    font-size: 11px; font-weight: 700; margin-bottom: 12px;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .today-task-title {
+    font-family: 'Nunito', sans-serif; font-weight: 800;
+    font-size: 1.2em; margin-bottom: 8px; color: var(--text);
+  }
+  .today-task-body { font-size: 13px; color: #666; line-height: 1.7; margin-bottom: 16px; }
+  .btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  .btn {
+    padding: 9px 18px; border-radius: 12px; border: none;
+    font-family: 'Quicksand', sans-serif; font-weight: 700;
+    font-size: 13px; cursor: pointer; transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .btn-primary { background: var(--orange); color: white; box-shadow: 0 4px 12px rgba(255,120,73,0.3); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(255,120,73,0.4); }
+  .btn-ghost { background: white; color: var(--muted); border: 2px solid var(--border); }
+  .btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
+  .btn-green { background: var(--green); color: white; box-shadow: 0 4px 12px rgba(62,207,142,0.3); }
+  .btn-blue { background: var(--blue); color: white; box-shadow: 0 4px 12px rgba(91,141,238,0.3); }
+
+  /* LOG FORM */
+  .log-form { display: flex; flex-direction: column; gap: 14px; }
+  .form-label { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; display: block; }
+  .form-input, .form-textarea, .form-select {
+    width: 100%; padding: 12px 16px;
+    background: var(--bg); border: 2px solid var(--border);
+    border-radius: 14px; font-size: 13.5px; font-weight: 500;
+    font-family: 'Quicksand', sans-serif; color: var(--text);
+    transition: border-color 0.2s;
+  }
+  .form-textarea { resize: vertical; min-height: 80px; }
+  .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--orange); }
+  .form-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .mood-section { }
+  .mood-grid { display: flex; gap: 8px; margin-top: 6px; }
+  .mood-btn {
+    flex: 1; padding: 10px 6px; border-radius: 14px;
+    border: 2px solid var(--border); background: white;
+    font-size: 1.5em; cursor: pointer; text-align: center;
+    transition: all 0.2s;
+  }
+  .mood-btn:hover { transform: scale(1.1); }
+  .mood-btn.sel { border-color: var(--orange); background: var(--orange-soft); transform: scale(1.08); box-shadow: 0 4px 12px rgba(255,120,73,0.2); }
+
+  .save-main-btn {
+    width: 100%; padding: 14px;
+    background: linear-gradient(135deg, var(--orange), var(--pink));
+    color: white; border: none; border-radius: 16px;
+    font-family: 'Nunito', sans-serif; font-weight: 800;
+    font-size: 15px; cursor: pointer;
+    box-shadow: 0 6px 20px rgba(255,120,73,0.35);
+    transition: all 0.2s;
+  }
+  .save-main-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(255,120,73,0.45); }
+
+  /* PROGRESS BARS */
+  .prog-card { margin-bottom: 14px; }
+  .prog-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .prog-title { font-size: 13px; font-weight: 700; color: var(--text); }
+  .prog-pct { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 14px; }
+  .prog-track { background: #f0ebe0; border-radius: 20px; height: 12px; overflow: hidden; }
+  .prog-fill { height: 100%; border-radius: 20px; transition: width 0.7s cubic-bezier(.4,0,.2,1); }
+  .fill-orange { background: linear-gradient(90deg, var(--orange), var(--yellow)); }
+  .fill-blue { background: linear-gradient(90deg, var(--blue), var(--purple)); }
+  .fill-green { background: linear-gradient(90deg, var(--green), var(--blue)); }
+
+  /* STATS GRID */
+  .stats-grid4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 20px; }
+
+  /* HISTORY */
+  .history-list { display: flex; flex-direction: column; gap: 12px; }
+  .hist-card {
+    background: white; border-radius: 18px; border: 2px solid var(--border);
+    padding: 16px 18px; display: flex; gap: 14px; align-items: flex-start;
+    box-shadow: var(--shadow); transition: box-shadow 0.2s;
+  }
+  .hist-card:hover { box-shadow: var(--shadow-hover); }
+  .hist-day-badge {
+    background: linear-gradient(135deg, var(--orange), var(--yellow));
+    color: white; border-radius: 14px; padding: 8px 12px;
+    text-align: center; flex-shrink: 0; min-width: 52px;
+  }
+  .hist-day-num { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.4em; line-height: 1; }
+  .hist-day-lbl { font-size: 9px; font-weight: 700; opacity: 0.8; text-transform: uppercase; }
+  .hist-content { flex: 1; }
+  .hist-title { font-weight: 700; font-size: 13.5px; margin-bottom: 4px; }
+  .hist-note { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+  .hist-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+  .chip { font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
+  .chip-orange { background: var(--orange-soft); color: var(--orange); }
+  .chip-green { background: var(--green-soft); color: var(--green); }
+  .chip-blue { background: var(--blue-soft); color: var(--blue); }
+  .hist-mood { font-size: 1.6em; flex-shrink: 0; }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+  .skill-card {
+    background: white; border-radius: 18px; border: 2px solid var(--border);
+    padding: 16px; box-shadow: var(--shadow);
+  }
+  .skill-name { font-size: 12.5px; font-weight: 700; margin-bottom: 10px; color: var(--text); }
+  .skill-btns { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+  .skbtn {
+    padding: 5px 2px; border-radius: 8px; border: 1.5px solid var(--border);
+    background: transparent; font-size: 9px; font-weight: 700; cursor: pointer;
+    font-family: 'Quicksand', sans-serif; color: var(--muted);
+    transition: all 0.15s;
+  }
+  .skbtn.on-none { background: #f0ebe0; border-color: #ddd; color: #bbb; }
+  .skbtn.on-basic { background: var(--yellow-soft); border-color: var(--yellow); color: #b87d00; }
+  .skbtn.on-good { background: var(--blue-soft); border-color: var(--blue); color: var(--blue); }
+  .skbtn.on-strong { background: var(--green-soft); border-color: var(--green); color: var(--green); }
+
+  /* PROMPT */
+  .prompt-box {
+    background: #1e1e2e; border-radius: 18px;
+    padding: 22px; margin-bottom: 16px;
+    font-family: 'Courier New', monospace; font-size: 12px;
+    line-height: 1.9; color: #a8d8a8; white-space: pre-wrap;
+    border: 2px solid #2d2d44;
+  }
+  .copy-big-btn {
+    width: 100%; padding: 14px;
+    background: linear-gradient(135deg, #1e1e2e, #2d2d4e);
+    color: #a8d8a8; border: 2px solid #3d3d5e; border-radius: 16px;
+    font-family: 'Nunito', sans-serif; font-weight: 800;
+    font-size: 14px; cursor: pointer; transition: all 0.2s;
+  }
+  .copy-big-btn:hover { background: linear-gradient(135deg, #2d2d4e, #3d3d6e); }
+
+  /* EMPTY STATE */
+  .empty { text-align: center; padding: 48px 20px; }
+  .empty-emoji { font-size: 3em; margin-bottom: 12px; }
+  .empty-title { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.1em; margin-bottom: 6px; }
+  .empty-sub { font-size: 13px; color: var(--muted); }
+
+  /* SECTION DIVIDER */
+  .sec-divider { display: flex; align-items: center; gap: 10px; margin: 20px 0 14px; }
+  .sec-divider-line { flex: 1; height: 1px; background: var(--border); }
+  .sec-divider-label { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  /* TOAST */
+  .toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(60px);
+    background: linear-gradient(135deg, var(--green), var(--blue));
+    color: white; padding: 12px 24px; border-radius: 20px;
+    font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15); z-index: 1000;
+    transition: transform 0.4s cubic-bezier(.34,1.56,.64,1);
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  @media (max-width: 680px) {
+    .app { flex-direction: column; }
+    .sidebar { width: 100%; flex-direction: row; overflow-x: auto; padding: 8px; border-right: none; border-bottom: 2px solid var(--border); }
+    .nav-section-label, .streak-widget { display: none; }
+    .nav-btn { flex-direction: column; gap: 2px; padding: 8px 12px; font-size: 10px; border-radius: 12px; }
+    .form-row2 { grid-template-columns: 1fr; }
+    .metric-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="logo">✨ My BA Journey</div>
+    <div class="logo-sub">Your 90-Day Career Switch Tracker</div>
+  </div>
+  <div class="header-badge">Day <span id="hdr-day">1</span> of 90 🚀</div>
+</header>
+
+<div class="app">
+  <div class="sidebar">
+    <div class="nav-section-label">My Journey</div>
+    <button class="nav-btn active" onclick="nav('today')"><span class="nav-icon">🌅</span> Today</button>
+    <button class="nav-btn" onclick="nav('log')"><span class="nav-icon">✏️</span> Log My Day</button>
+    <button class="nav-btn" onclick="nav('stats')"><span class="nav-icon">📊</span> My Progress</button>
+    <button class="nav-btn" onclick="nav('history')"><span class="nav-icon">📖</span> My Story</button>
+    <div class="nav-section-label">Tools</div>
+    <button class="nav-btn" onclick="nav('skills')"><span class="nav-icon">🧠</span> My Skills</button>
+    <button class="nav-btn" onclick="nav('prompt')"><span class="nav-icon">💬</span> Claude Prompt</button>
+    <button class="nav-btn" onclick="nav('backup')"><span class="nav-icon">💾</span> Backup & Restore</button>
+
+    <div class="streak-widget">
+      <div class="streak-fire">🔥</div>
+      <div class="streak-num" id="sw-streak">0</div>
+      <div class="streak-label">Day Streak!</div>
+      <div class="streak-total" id="sw-total">0 days logged so far</div>
+    </div>
+  </div>
+
+  <div class="main">
+
+    <!-- TODAY -->
+    <div class="panel active" id="panel-today">
+      <div class="panel-title">Good day! 👋</div>
+      <div class="panel-sub" id="today-theme">Here's what's on your plate today...</div>
+
+      <div class="metric-grid">
+        <div class="metric-card orange">
+          <div class="metric-icon">📅</div>
+          <div class="metric-val" id="td-day">1</div>
+          <div class="metric-label">Current Day</div>
+        </div>
+        <div class="metric-card blue">
+          <div class="metric-icon">⏳</div>
+          <div class="metric-val" id="td-rem">89</div>
+          <div class="metric-label">Days Left</div>
+        </div>
+        <div class="metric-card green">
+          <div class="metric-icon">💼</div>
+          <div class="metric-val" id="td-jobs">0</div>
+          <div class="metric-label">Jobs Applied</div>
+        </div>
+        <div class="metric-card purple">
+          <div class="metric-icon">🔥</div>
+          <div class="metric-val" id="td-streak">0</div>
+          <div class="metric-label">Day Streak</div>
+        </div>
+      </div>
+
+      <div id="today-task-area"></div>
+
+      <div class="btn-row" style="margin-top:16px;">
+        <button class="btn btn-primary" onclick="nav('log')">✏️ Log Today</button>
+        <button class="btn btn-ghost" onclick="shiftDay(-1)">← Yesterday</button>
+        <button class="btn btn-ghost" onclick="shiftDay(1)">Tomorrow →</button>
+      </div>
+    </div>
+
+    <!-- LOG -->
+    <div class="panel" id="panel-log">
+      <div class="panel-title">Log My Day ✏️</div>
+      <div class="panel-sub">What did you do today? Be honest — good days and tough ones both count!</div>
+
+      <div class="card">
+        <div class="log-form">
+          <div class="form-row2">
+            <div>
+              <label class="form-label">Day Number</label>
+              <input class="form-input" type="number" id="log-day" min="1" max="90" value="1">
+            </div>
+            <div>
+              <label class="form-label">Jobs Applied Today</label>
+              <input class="form-input" type="number" id="log-jobs" min="0" max="20" value="0">
+            </div>
+          </div>
+
+          <div>
+            <label class="form-label">🎯 What I Learned / Did Today</label>
+            <textarea class="form-textarea" id="log-learned" placeholder="e.g. Watched 3 YouTube videos on BA roles. Learned VLOOKUP. Created my first pivot table with Kaggle data. Spent 45 mins on SQLZoo..."></textarea>
+          </div>
+
+          <div>
+            <label class="form-label">🤔 Challenges / Where I Got Stuck</label>
+            <textarea class="form-textarea" id="log-stuck" placeholder="e.g. SQL JOINs are confusing. Need more practice. Couldn't finish the dashboard today..." style="min-height:60px;"></textarea>
+          </div>
+
+          <div>
+            <label class="form-label">📋 Tomorrow's Plan</label>
+            <input class="form-input" type="text" id="log-tomorrow" placeholder="e.g. Complete SQL JOINs on SQLZoo, watch Power BI tutorial">
+          </div>
+
+          <div class="mood-section">
+            <label class="form-label">💫 Today's Vibe</label>
+            <div class="mood-grid">
+              <button class="mood-btn" onclick="setMood('😩')" id="m-😩">😩</button>
+              <button class="mood-btn" onclick="setMood('😐')" id="m-😐">😐</button>
+              <button class="mood-btn sel" onclick="setMood('🙂')" id="m-🙂">🙂</button>
+              <button class="mood-btn" onclick="setMood('😄')" id="m-😄">😄</button>
+              <button class="mood-btn" onclick="setMood('🔥')" id="m-🔥">🔥</button>
+            </div>
+          </div>
+
+          <button class="save-main-btn" onclick="saveLog()">💾 Save Today's Log!</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="panel" id="panel-stats">
+      <div class="panel-title">My Progress 📊</div>
+      <div class="panel-sub">Look how far you've come!</div>
+
+      <div class="stats-grid4">
+        <div class="metric-card orange" style="border-radius:18px;padding:18px;">
+          <div class="metric-icon">📝</div>
+          <div class="metric-val" id="st-logged">0</div>
+          <div class="metric-label">Days Logged</div>
+        </div>
+        <div class="metric-card green" style="border-radius:18px;padding:18px;">
+          <div class="metric-icon">🔥</div>
+          <div class="metric-val" id="st-streak">0</div>
+          <div class="metric-label">Streak</div>
+        </div>
+        <div class="metric-card blue" style="border-radius:18px;padding:18px;">
+          <div class="metric-icon">💼</div>
+          <div class="metric-val" id="st-jobs">0</div>
+          <div class="metric-label">Jobs Applied</div>
+        </div>
+        <div class="metric-card purple" style="border-radius:18px;padding:18px;">
+          <div class="metric-icon">📅</div>
+          <div class="metric-val" id="st-day">1</div>
+          <div class="metric-label">Current Day</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="prog-card">
+          <div class="prog-header">
+            <span class="prog-title">🚀 Overall Journey</span>
+            <span class="prog-pct" style="color:var(--orange)" id="p1-pct">1%</span>
+          </div>
+          <div class="prog-track"><div class="prog-fill fill-orange" id="p1-bar" style="width:1%"></div></div>
+        </div>
+        <div class="prog-card" style="margin-top:14px;">
+          <div class="prog-header">
+            <span class="prog-title">💼 Jobs Applied (Target: 50)</span>
+            <span class="prog-pct" style="color:var(--blue)" id="p2-pct">0%</span>
+          </div>
+          <div class="prog-track"><div class="prog-fill fill-blue" id="p2-bar" style="width:0%"></div></div>
+        </div>
+        <div class="prog-card" style="margin-top:14px;">
+          <div class="prog-header">
+            <span class="prog-title">✅ Daily Consistency</span>
+            <span class="prog-pct" style="color:var(--green)" id="p3-pct">0%</span>
+          </div>
+          <div class="prog-track"><div class="prog-fill fill-green" id="p3-bar" style="width:0%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HISTORY -->
+    <div class="panel" id="panel-history">
+      <div class="panel-title">My Story 📖</div>
+      <div class="panel-sub">Every day you've logged — your journey from Day 1.</div>
+      <div class="history-list" id="hist-list">
+        <div class="empty">
+          <div class="empty-emoji">📖</div>
+          <div class="empty-title">No entries yet!</div>
+          <div class="empty-sub">Log your first day and your story begins here 🌱</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="panel" id="panel-skills">
+      <div class="panel-title">My Skills 🧠</div>
+      <div class="panel-sub">Update your level as you learn. Watch yourself grow! 🌱</div>
+      <div class="skills-grid" id="skills-grid"></div>
+    </div>
+
+    <!-- BACKUP -->
+    <div class="panel" id="panel-backup">
+      <div class="panel-title">Backup & Restore 💾</div>
+      <div class="panel-sub">Save your progress as a text file. Load it back anytime, on any device or browser!</div>
+
+      <div class="card" style="margin-bottom:16px;">
+        <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:1.05em;margin-bottom:6px;">📤 Export My Progress</div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.7;">Downloads a <strong>.txt backup file</strong> with all your logs, skills, and stats. Save it to your phone, Google Drive, or WhatsApp yourself!</div>
+        <button class="save-main-btn" style="max-width:220px;" onclick="exportData()">⬇️ Download Backup File</button>
+      </div>
+
+      <div class="card" style="margin-bottom:16px;">
+        <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:1.05em;margin-bottom:6px;">📥 Import / Restore Progress</div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.7;">Have a backup file? Upload it here to restore all your progress instantly — on any browser or device!</div>
+        <label class="form-label">Select your backup .txt file</label>
+        <input type="file" id="import-file" accept=".txt" style="margin-bottom:12px;font-size:13px;color:var(--muted);">
+        <br>
+        <button class="btn btn-blue" onclick="importData()" style="margin-top:8px;">⬆️ Restore From File</button>
+      </div>
+
+      <div class="card" style="background:var(--yellow-soft);border-color:#fcdbb8;">
+        <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:1em;margin-bottom:8px;">💡 Best Practice Tips</div>
+        <div style="font-size:13px;color:#7a5c00;line-height:1.9;font-weight:500;">
+          📅 Export every Sunday as your weekly backup<br>
+          ☁️ Save the file to Google Drive or WhatsApp yourself<br>
+          📱 Use same backup file to switch between phone & laptop<br>
+          🔄 Re-import anytime if you open a new browser or clear cache
+        </div>
+      </div>
+    </div>
+
+    <!-- PROMPT -->
+    <div class="panel" id="panel-prompt">
+      <div class="panel-title">Daily Claude Prompt 💬</div>
+      <div class="panel-sub">Copy this every time you open a new Claude chat. It tells Claude everything about you instantly!</div>
+      <div class="prompt-box" id="prompt-box">Loading your personalized prompt...</div>
+      <button class="copy-big-btn" onclick="copyPrompt()">📋 Copy My Prompt!</button>
+
+      <div class="card" style="margin-top:16px;">
+        <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:1em;margin-bottom:10px;">How to use daily 👇</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.9;font-weight:500;">
+          1️⃣ Open Claude.ai in a new chat<br>
+          2️⃣ Paste this prompt as your first message<br>
+          3️⃣ Then ask your specific question for today<br>
+          4️⃣ Come back here after & log your progress<br><br>
+          <span style="color:var(--orange);font-weight:700;">The prompt auto-updates with your latest stats every time you log a day! 🎉</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="toast" id="toast">✅ Saved!</div>
+
+<script>
+const SKILLS = [
+  'Excel Basics','VLOOKUP / INDEX-MATCH','Pivot Tables','Excel Dashboard',
+  'SQL SELECT / WHERE','SQL JOINs / GROUP BY','Power BI Basics','Power BI Dashboard',
+  'BRD Writing','User Stories','Process Flow (draw.io)','Requirements Gathering',
+  'JIRA Basics','Agile / Scrum','Meta Ads (existing)','Interview Prep'
+];
+
+const SCHED = [
+  {w:1,th:"BA Research + Excel Basics",tasks:[
+    {d:"Monday",t:"BA Research 🔍",b:"Watch 3 YouTube videos: 'What does a Business Analyst do'. Write 5 things you learned!"},
+    {d:"Tuesday",t:"Excel Basics 📊",b:"Learn SUM, AVERAGE, COUNT, IF formulas. Practice on any dummy data."},
+    {d:"Wednesday",t:"VLOOKUP Magic ✨",b:"Watch Leila Gharani's VLOOKUP tutorial. Build a practice sheet with real data."},
+    {d:"Thursday",t:"Pivot Tables 🔄",b:"Learn Pivot Tables on YouTube. Create one from scratch with sample sales data."},
+    {d:"Friday",t:"LinkedIn Setup 💼",b:"Create your profile! Headline: 'Aspiring Business Analyst | Finance & Operations'."},
+    {d:"Saturday",t:"Naukri Profile 🎯",b:"Create Naukri account. Read 10 Junior BA job descriptions. Note common skills."},
+    {d:"Sunday",t:"Rest & Review 😌",b:"Review Week 1. Plan Week 2. Read 1 article on becoming a BA in India."},
+  ]},
+  {w:2,th:"Advanced Excel + SQL Starts! 🐣",tasks:[
+    {d:"Monday",t:"INDEX-MATCH 🔗",b:"Learn INDEX-MATCH. Practice replacing your VLOOKUP with it."},
+    {d:"Tuesday",t:"Conditional Formatting 🎨",b:"Learn Conditional Formatting + Data Validation in Excel."},
+    {d:"Wednesday",t:"SQL Day 1! 🎉",b:"Go to SQLZoo.net. Complete 'SELECT basics' — all 9 questions. You've got this!"},
+    {d:"Thursday",t:"SQL Day 2 💪",b:"Complete 'SELECT from World' on SQLZoo. Practice WHERE and filtering."},
+    {d:"Friday",t:"BA Language 🗣️",b:"Rewrite your current job description using BA keywords. This becomes your resume!"},
+    {d:"Saturday",t:"Excel Dashboard 🏗️",b:"Build a 3-chart Excel dashboard using free Kaggle data. Portfolio item #1!"},
+    {d:"Sunday",t:"Rest + SQL Review 😴",b:"Review SQL notes. Watch 1 'Day in the Life of a BA' YouTube video."},
+  ]},
+  {w:3,th:"SQL Intermediate + BA Concepts",tasks:[
+    {d:"Monday",t:"SQL GROUP BY 📦",b:"Learn GROUP BY, COUNT, SUM. Do SQLZoo 'SELECT within SELECT' section."},
+    {d:"Tuesday",t:"SQL JOINs! 🔀",b:"Learn INNER JOIN and LEFT JOIN. Watch Alex The Analyst. Write 3 JOIN queries yourself."},
+    {d:"Wednesday",t:"BRD Basics 📄",b:"Google 'BRD template free'. Read one sample BRD. Understand its full structure."},
+    {d:"Thursday",t:"Requirements 101 📋",b:"Watch 'Requirements Gathering for BA'. Learn functional vs non-functional requirements."},
+    {d:"Friday",t:"SQL Practice 🏋️",b:"Download Kaggle dataset. Write 5 SQL queries on it using SQLiteOnline.com."},
+    {d:"Saturday",t:"Agile Basics ⚡",b:"Watch 'Agile in 8 minutes' on YouTube. Write a 1-page summary in your own words."},
+    {d:"Sunday",t:"Test Yourself! 🎯",b:"Write 3 SQL queries from memory without looking. If you can — you've got it!"},
+  ]},
+  {w:4,th:"Power BI + Resume Time! 📄",tasks:[
+    {d:"Monday",t:"Install Power BI 💻",b:"Download Power BI Desktop free. Watch 'Power BI in 1 hour' on YouTube."},
+    {d:"Tuesday",t:"Connect Data 🔌",b:"Connect Power BI to an Excel file. Explore the Fields panel."},
+    {d:"Wednesday",t:"First Dashboard! 🎨",b:"Build a 3-chart Power BI dashboard: Bar + Line + Card. Use Kaggle data."},
+    {d:"Thursday",t:"Resume Draft ✍️",b:"Write your resume with BA keywords: data analysis, stakeholder management, requirement gathering."},
+    {d:"Friday",t:"Resume Polish ✨",b:"Share on LinkedIn for feedback. Or paste to Claude for review!"},
+    {d:"Saturday",t:"Month 1 Review 🎉",b:"Test all skills. Apply to 3 jobs just to practice the process!"},
+    {d:"Sunday",t:"Celebrate! 🥳",b:"FULL REST. You finished Month 1! You're ahead of 90% of people who 'plan to switch'."},
+  ]},
+  {w:5,th:"Portfolio Project 1 — Data Analysis! 🏗️",tasks:[
+    {d:"Monday",t:"Pick a Dataset 🗃️",b:"Go to Kaggle.com. Search 'sales dataset India'. Download one CSV file."},
+    {d:"Tuesday",t:"Clean the Data 🧹",b:"Remove blank rows, fix inconsistencies, standardize date formats."},
+    {d:"Wednesday",t:"Analyze! 🔬",b:"Create Pivot Tables: sales by month, top 5 products, best regions. Find patterns!"},
+    {d:"Thursday",t:"Visualize 📈",b:"Make 4 clean charts. Add titles, labels, colors. Make it look great!"},
+    {d:"Friday",t:"Write Report 📝",b:"Write 1-page 'Findings & Recommendations'. What should the business do?"},
+    {d:"Saturday",t:"Upload Portfolio 🚀",b:"Save to Google Drive. Create shareable folder. Add link to LinkedIn + resume!"},
+    {d:"Sunday",t:"Post on LinkedIn! 🌟",b:"Post your project on LinkedIn: 'I built my first data analysis project transitioning to BA'!"},
+  ]},
+  {w:6,th:"JIRA + Agile + Google Certificate",tasks:[
+    {d:"Monday",t:"JIRA Setup 🛠️",b:"Create free JIRA account at atlassian.com. Explore Boards, Epics, Stories, Sprints."},
+    {d:"Tuesday",t:"JIRA Practice ⚙️",b:"Create a mock project. Add 5 User Stories. Assign to a sprint. Move one to 'Done'!"},
+    {d:"Wednesday",t:"Google Cert Apply 🎓",b:"Apply for Coursera Financial Aid for Google Data Analytics. Just 15 mins!"},
+    {d:"Thursday",t:"User Stories 📖",b:"Write 5 User Stories: 'As a [user], I want [goal] so that [reason]'."},
+    {d:"Friday",t:"Scrum Roles 👥",b:"Learn Product Owner, Scrum Master, Dev Team. How does a BA fit in each?"},
+    {d:"Saturday",t:"Apply 5 Jobs! 💼",b:"Apply to 5 Junior BA / MIS Analyst jobs on Naukri. Let's go!"},
+    {d:"Sunday",t:"Network 🤝",b:"Connect with 5 BAs on LinkedIn. Short 1-line intro message works!"},
+  ]},
+  {w:7,th:"Portfolio Project 2 — Write a BRD! 📄",tasks:[
+    {d:"Monday",t:"BRD Template 📋",b:"Download free BRD template from Google. Read every section carefully."},
+    {d:"Tuesday",t:"Choose Your Topic 💡",b:"Mock BRD: 'Digital Payment System for Tamil Nadu Textile Business'. Write Overview."},
+    {d:"Wednesday",t:"Stakeholders 👥",b:"List stakeholders: owner, cashier, customers. Write their needs and concerns."},
+    {d:"Thursday",t:"Write Requirements ✍️",b:"Write 8 Functional + 4 Non-Functional Requirements for your mock system."},
+    {d:"Friday",t:"Flow Diagram 🗺️",b:"Go to draw.io. Create process flow: Customer pays → System records → Owner gets report."},
+    {d:"Saturday",t:"Finalize BRD ✅",b:"Polish your BRD. Save as PDF. Upload to Google Drive portfolio folder!"},
+    {d:"Sunday",t:"Apply 5 More! 💼",b:"Apply to 5 more jobs. Track all in an Excel sheet. Total: 10+ by now!"},
+  ]},
+  {w:8,th:"Interview Prep — Full Mode! 🎤",tasks:[
+    {d:"Monday",t:"Tell Me About Yourself 🎤",b:"Practice out loud. Record yourself. Your story: finance background → BA transition → skills learned."},
+    {d:"Tuesday",t:"BA Questions 💬",b:"Practice: 'What is a BRD?', 'Functional vs non-functional?' Answer OUT LOUD!"},
+    {d:"Wednesday",t:"Stakeholder Q 🤝",b:"Practice: 'How do you gather requirements?' Use your real job as example!"},
+    {d:"Thursday",t:"SQL Interview 💻",b:"Practice: 'Find top 5 customers by sales'. Use SQLiteOnline.com."},
+    {d:"Friday",t:"Mock Interview! 🎭",b:"Full 30-min mock with a friend or family member. Record it and review!"},
+    {d:"Saturday",t:"Apply 10 Jobs! 🚀",b:"BIG PUSH — apply to 10 jobs today. Set Naukri alerts for 'Business Analyst Chennai'."},
+    {d:"Sunday",t:"Month 2 Review 🎉",b:"Month 2 complete! Check portfolio — are all Google Drive links working?"},
+  ]},
+  {w:9,th:"Apply Apply Apply! 5 Per Day 💼",tasks:[
+    {d:"Monday",t:"Apply x5 💼",b:"Apply to 5 jobs: Junior BA, MIS Analyst, Operations Analyst, Functional Analyst."},
+    {d:"Tuesday",t:"Follow Up 📩",b:"Message recruiters on LinkedIn for jobs applied 1 week ago. Polite and short!"},
+    {d:"Wednesday",t:"Apply x5 again! 💼",b:"5 more applications. Try Chennai, Coimbatore, Bangalore remote roles."},
+    {d:"Thursday",t:"Skill Polish 💪",b:"Review weakest skill — SQL or Power BI. Spend 1 hour strengthening it."},
+    {d:"Friday",t:"Apply x5 more! 💼",b:"5 applications. Update Naukri profile — recruiters call active profiles!"},
+    {d:"Saturday",t:"Company Research 🔍",b:"Research 5 companies you applied to. Know their product, industry, recent news."},
+    {d:"Sunday",t:"Track + Plan 📊",b:"Update your application tracker Excel. Count totals. Adjust strategy if needed."},
+  ]},
+  {w:10,th:"Interviews Rolling In! 🎉",tasks:[
+    {d:"Monday",t:"Interview Prep 🎤",b:"If interview scheduled — research company 30 mins. Prepare 2 questions to ask them."},
+    {d:"Tuesday",t:"Apply x5 💼",b:"Continue 5 applications per day. Don't slow down!"},
+    {d:"Wednesday",t:"Thank You Email 📧",b:"Send thank-you email within 24 hrs after each interview. Most candidates skip this!"},
+    {d:"Thursday",t:"Apply x5 💼",b:"5 more applications. Check LinkedIn Easy Apply — faster to submit."},
+    {d:"Friday",t:"Debrief 📝",b:"After any interviews this week — write every question asked. Prepare better answers."},
+    {d:"Saturday",t:"Power BI Update 📈",b:"Add second Power BI dashboard to portfolio. More projects = more confidence!"},
+    {d:"Sunday",t:"Rest & Mindset 🌻",b:"Rejection is normal. Every no is closer to a yes. Rest fully today! You've got this."},
+  ]},
+  {w:11,th:"Offers Coming In! 🎁 Negotiate!",tasks:[
+    {d:"Monday",t:"Offer Check ✅",b:"If offer received: check for PF, ESI, formal offer letter, leave policy. Non-negotiables!"},
+    {d:"Tuesday",t:"Negotiate! 💪",b:"Counter confidently: 'I was expecting ₹5.5–6 LPA, is there flexibility?' You deserve it!"},
+    {d:"Wednesday",t:"Compare Offers ⚖️",b:"If multiple offers: compare salary, growth, WFH, culture. Not just highest pay!"},
+    {d:"Thursday",t:"Keep Applying 💼",b:"Even if evaluating offers — keep applying until you sign. Offers can fall through."},
+    {d:"Friday",t:"Ask Questions 🤔",b:"Before accepting: 'What does BA growth look like here in 2 years?' Shows maturity!"},
+    {d:"Saturday",t:"Get It Written! 📄",b:"NEVER resign without written offer letter in hand. Verbal offers don't count!"},
+    {d:"Sunday",t:"Rest & Reflect 🌟",b:"Big week. Whatever happens — look how far you've come! Rest and recharge."},
+  ]},
+  {w:12,th:"The Final Week! You Made It! 🏆",tasks:[
+    {d:"Monday",t:"Resignation 👋",b:"Give notice professionally. Ask for experience letter. Leave on good terms always."},
+    {d:"Tuesday",t:"Handover 📋",b:"Document your current tasks clearly. Hand over cleanly. This is BA professionalism!"},
+    {d:"Wednesday",t:"Research New Co 🔍",b:"Research new company in depth: product, competitors, recent news. Be ready!"},
+    {d:"Thursday",t:"Tools Prep 🛠️",b:"Check new job description. Learn any new tools with 30-min YouTube tutorials."},
+    {d:"Friday",t:"Final Review 🎯",b:"Review your entire 90-day journey. Write what you learned. You've grown so much!"},
+    {d:"Saturday",t:"CELEBRATE! 🥳🎉",b:"You switched careers in 90 days! From ₹4 LPA no PF → formal BA with real benefits!"},
+    {d:"Sunday",t:"Rest Before Day 1 😴",b:"Sleep well. Prepare outfit, bag, documents. Be early on Day 1. You've absolutely got this! ❤️"},
+  ]},
+];
+
+let S = { day:1, logs:[], skills:{}, mood:'🙂' };
+
+function load() {
+  const s = localStorage.getItem('ba_friendly_v1');
+  if (s) S = JSON.parse(s);
+  sync();
+}
+function store() { localStorage.setItem('ba_friendly_v1', JSON.stringify(S)); }
+
+function sync() {
+  const streak = getStreak();
+  const jobs = totalJobs();
+  document.getElementById('hdr-day').textContent = S.day;
+  document.getElementById('td-day').textContent = S.day;
+  document.getElementById('td-rem').textContent = 90 - S.day;
+  document.getElementById('td-jobs').textContent = jobs;
+  document.getElementById('td-streak').textContent = streak;
+  document.getElementById('sw-streak').textContent = streak;
+  document.getElementById('sw-total').textContent = S.logs.length + ' days logged so far';
+  document.getElementById('log-day').value = S.day;
+
+  // stats
+  document.getElementById('st-logged').textContent = S.logs.length;
+  document.getElementById('st-streak').textContent = streak;
+  document.getElementById('st-jobs').textContent = jobs;
+  document.getElementById('st-day').textContent = S.day;
+
+  const op = Math.max(1, Math.round((S.day/90)*100));
+  document.getElementById('p1-pct').textContent = op+'%';
+  document.getElementById('p1-bar').style.width = op+'%';
+  const jp = Math.min(100, Math.round((jobs/50)*100));
+  document.getElementById('p2-pct').textContent = jp+'%';
+  document.getElementById('p2-bar').style.width = jp+'%';
+  const lp = S.day > 0 ? Math.round((S.logs.length/S.day)*100) : 0;
+  document.getElementById('p3-pct').textContent = lp+'%';
+  document.getElementById('p3-bar').style.width = lp+'%';
+
+  renderTodayTask();
+  renderHistory();
+  renderSkills();
+  renderPrompt();
+}
+
+function getStreak() {
+  if (!S.logs.length) return 0;
+  const days = new Set(S.logs.map(l=>l.day));
+  let streak = 0, cur = S.day;
+  while (days.has(cur) || days.has(cur-1)) {
+    if (days.has(cur)) { streak++; cur--; }
+    else break;
+  }
+  return streak;
+}
+
+function totalJobs() { return S.logs.reduce((s,l)=>s+(l.jobs||0),0); }
+
+function getSchedule() {
+  const wi = Math.min(Math.floor((S.day-1)/7), 11);
+  const di = (S.day-1) % 7;
+  const week = SCHED[wi];
+  return { week, task: week?.tasks[di], wn: wi+1 };
+}
+
+function renderTodayTask() {
+  const { week, task, wn } = getSchedule();
+  document.getElementById('today-theme').textContent = week ? `Week ${wn}: ${week.th}` : 'You finished the 90 days! 🏆';
+  const logged = S.logs.some(l=>l.day===S.day);
+  document.getElementById('today-task-area').innerHTML = task ? `
+    <div class="today-task-card">
+      <div class="task-chip">📌 ${task.d} — Week ${wn}</div>
+      <div class="today-task-title">${task.t}</div>
+      <div class="today-task-body">${task.b}</div>
+      <div class="btn-row">
+        <button class="btn ${logged?'btn-green':'btn-primary'}" onclick="nav('log')">
+          ${logged?'✅ Already Logged!':'✏️ Log This Day'}
+        </button>
+      </div>
+    </div>
+  ` : `<div class="today-task-card"><div class="today-task-title">🏆 You completed all 90 days!</div></div>`;
+}
+
+function renderHistory() {
+  const el = document.getElementById('hist-list');
+  if (!S.logs.length) {
+    el.innerHTML = '<div class="empty"><div class="empty-emoji">📖</div><div class="empty-title">No entries yet!</div><div class="empty-sub">Log your first day and your story begins here 🌱</div></div>';
+    return;
+  }
+  const sorted = [...S.logs].sort((a,b)=>b.day-a.day);
+  el.innerHTML = sorted.map(l=>`
+    <div class="hist-card">
+      <div class="hist-day-badge">
+        <div class="hist-day-num">${l.day}</div>
+        <div class="hist-day-lbl">Day</div>
+      </div>
+      <div class="hist-content">
+        <div class="hist-title">Week ${Math.ceil(l.day/7)} · ${l.tomorrow||'No plan noted'}</div>
+        <div class="hist-note">${l.learned||'—'}</div>
+        <div class="hist-chips">
+          ${l.jobs>0?`<span class="chip chip-blue">+${l.jobs} jobs applied</span>`:''}
+          ${l.learned?'<span class="chip chip-green">✓ learned</span>':''}
+          ${l.stuck?'<span class="chip chip-orange">had questions</span>':''}
+        </div>
+      </div>
+      <div class="hist-mood">${l.mood||'🙂'}</div>
+    </div>
+  `).join('');
+}
+
+function renderSkills() {
+  const grid = document.getElementById('skills-grid');
+  grid.innerHTML = SKILLS.map(sk=>{
+    const lv = S.skills[sk]||'none';
+    return `<div class="skill-card">
+      <div class="skill-name">${sk}</div>
+      <div class="skill-btns">
+        ${['none','basic','good','strong'].map(l=>`
+          <button class="skbtn ${lv===l?'on-'+l:''}" onclick="setSkill('${sk}','${l}')">
+            ${l==='none'?'—':l==='basic'?'🌱':l==='good'?'💪':'⭐'}
+          </button>
+        `).join('')}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderPrompt() {
+  const jobs = totalJobs();
+  const streak = getStreak();
+  const last = [...S.logs].sort((a,b)=>b.day-a.day)[0];
+  const { week, task, wn } = getSchedule();
+  const strong = Object.entries(S.skills).filter(([,v])=>v==='strong').map(([k])=>k);
+  const learning = Object.entries(S.skills).filter(([,v])=>v==='basic'||v==='good').map(([k])=>k);
+
+  document.getElementById('prompt-box').textContent =
+`I'm 25 years old from Tamil Nadu, India. B.Com graduate switching from Accounting/Finance to Business Analyst.
+
+BACKGROUND:
+- 2 years multi-role finance experience (cash management, stakeholder coordination, auditor queries, vendor follow-ups, payroll)
+- Know Digital Marketing (Meta Ads)
+- Already doing BA work — gap is just tools + positioning
+- Positioning as Finance Professional moving into BA (not starting from zero)
+
+MY 90-DAY PLAN STATUS:
+- Current Day: ${S.day} of 90
+- Current Week: Week ${wn} — ${week?.th||''}
+- Today (${task?.d||''}): ${task?.t||''} — ${task?.b||''}
+- Days Logged: ${S.logs.length} | Streak: ${streak} days 🔥
+- Total Jobs Applied: ${jobs}
+
+SKILLS:
+- Strong: ${strong.length ? strong.join(', ') : 'None yet'}
+- Learning: ${learning.length ? learning.join(', ') : 'Just starting out'}
+
+LAST LOG (Day ${last?.day||'—'}):
+- Learned: ${last?.learned||'Nothing logged yet'}
+- Stuck on: ${last?.stuck||'Nothing noted'}
+- Tomorrow plan: ${last?.tomorrow||'Not noted'}
+
+TODAY I NEED HELP WITH:
+[Write your specific question here — e.g. "Teach me SQL JOINs", "Review my resume", "Give me 5 BA interview Q&A"]`;
+}
+
+function setMood(m) {
+  S.mood = m;
+  document.querySelectorAll('.mood-btn').forEach(b=>b.classList.remove('sel'));
+  document.getElementById('m-'+m)?.classList.add('sel');
+}
+
+function setSkill(sk, lv) {
+  S.skills[sk] = lv;
+  store(); renderSkills(); renderPrompt();
+}
+
+function saveLog() {
+  const day = parseInt(document.getElementById('log-day').value)||1;
+  const jobs = parseInt(document.getElementById('log-jobs').value)||0;
+  const learned = document.getElementById('log-learned').value.trim();
+  const stuck = document.getElementById('log-stuck').value.trim();
+  const tomorrow = document.getElementById('log-tomorrow').value.trim();
+  if (!learned) { showToast('Please write what you learned! 😊'); return; }
+  S.logs = S.logs.filter(l=>l.day!==day);
+  S.logs.push({ day, jobs, learned, stuck, tomorrow, mood: S.mood, ts: Date.now() });
+  if (day >= S.day) S.day = Math.min(90, day + 1);
+  store(); sync();
+  document.getElementById('log-learned').value='';
+  document.getElementById('log-stuck').value='';
+  document.getElementById('log-tomorrow').value='';
+  document.getElementById('log-jobs').value='0';
+  showToast(`🎉 Day ${day} logged! You're amazing!`);
+  setTimeout(()=>nav('today'), 800);
+}
+
+function shiftDay(d) {
+  S.day = Math.max(1, Math.min(90, S.day + d));
+  store(); sync();
+}
+
+function copyPrompt() {
+  navigator.clipboard.writeText(document.getElementById('prompt-box').textContent).then(()=>{
+    showToast('📋 Prompt copied! Paste it in Claude now!');
+  });
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 3000);
+}
+
+function exportData() {
+  const jobs = totalJobs();
+  const streak = getStreak();
+  const { wn, week } = getSchedule();
+
+  let text = `================================================================
+  MY BA JOURNEY — PROGRESS BACKUP FILE
+  Exported on: ${new Date().toLocaleString('en-IN')}
+================================================================
+
+SUMMARY
+-------
+Current Day   : ${S.day} of 90
+Current Week  : Week ${wn} — ${week?.th||''}
+Days Logged   : ${S.logs.length}
+Total Jobs    : ${jobs}
+Streak        : ${streak} days 🔥
+
+================================================================
+SKILLS TRACKER
+================================================================
+`;
+  const levels = { none:'—', basic:'🌱 Basic', good:'💪 Good', strong:'⭐ Strong' };
+  for (const sk of Object.keys(S.skills)) {
+    text += `${sk.padEnd(30)} ${levels[S.skills[sk]]||'—'}\n`;
+  }
+
+  text += `
+================================================================
+DAILY LOGS (${S.logs.length} entries)
+================================================================
+`;
+  const sorted = [...S.logs].sort((a,b)=>a.day-b.day);
+  for (const l of sorted) {
+    text += `
+--- DAY ${l.day} | Week ${Math.ceil(l.day/7)} | ${l.mood||'🙂'} ---
+Learned   : ${l.learned||'—'}
+Stuck on  : ${l.stuck||'—'}
+Tomorrow  : ${l.tomorrow||'—'}
+Jobs Today: ${l.jobs||0}
+Logged at : ${l.ts ? new Date(l.ts).toLocaleString('en-IN') : '—'}
+`;
+  }
+
+  text += `
+================================================================
+RAW DATA (for restore — DO NOT EDIT below this line)
+================================================================
+BATRACK_DATA_V1:${JSON.stringify(S)}
+================================================================
+`;
+
+  const blob = new Blob([text], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `BA_Progress_Day${S.day}_${new Date().toISOString().slice(0,10)}.txt`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('✅ Backup file downloaded! Save it safely 🎉');
+}
+
+function importData() {
+  const file = document.getElementById('import-file').files[0];
+  if (!file) { showToast('Please select a backup file first! 😊'); return; }
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const text = e.target.result;
+      const marker = 'BATRACK_DATA_V1:';
+      const idx = text.indexOf(marker);
+      if (idx === -1) { showToast('❌ Invalid backup file. Please use the exported file.'); return; }
+      const jsonStr = text.slice(idx + marker.length).split('\n')[0].trim();
+      const data = JSON.parse(jsonStr);
+      if (!data.logs || !Array.isArray(data.logs)) throw new Error('Bad data');
+      S = data;
+      store();
+      sync();
+      showToast(`🎉 Restored! Day ${S.day}, ${S.logs.length} logs loaded!`);
+      nav('today');
+    } catch(err) {
+      showToast('❌ Could not read file. Make sure it\'s your backup file.');
+    }
+  };
+  reader.readAsText(file);
+}
+
+function nav(p) {
+  document.querySelectorAll('.panel').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+p).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b=>{
+    if (b.getAttribute('onclick')?.includes("'"+p+"'")) b.classList.add('active');
+  });
+  if (p==='prompt') renderPrompt();
+}
+
+load();
+</script>
+</body>
+</html>
